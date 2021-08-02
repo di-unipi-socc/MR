@@ -1,0 +1,27 @@
+<div class="container">
+    <form (submit)="parseRoute()">
+        <table>
+            <tr>
+                <th>
+                    <label for="inputRoute">Insert Camel Route</label><br>
+                </th>
+                <th>
+                    <label for="outputRoute">Output</label><br>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <textarea name="inputRoute" placeholder="Insert route here" [(ngModel)]="inputRoute"></textarea><br>
+                </th>
+                <th>
+                    <textarea name="outputRoute" placeholder="Output will be displayed here" [(ngModel)]="outputRoute"></textarea>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="submit" value="Parse"/>
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>

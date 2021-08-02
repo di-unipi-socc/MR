@@ -1,0 +1,9 @@
+.container, table {
+    text-align: center;
+    margin: auto;
+}
+
+textarea {
+    height: 200px;
+    width: 200px;
+}
