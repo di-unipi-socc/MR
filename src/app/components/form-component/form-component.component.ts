@@ -1,8 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { Architecture, FormServiceService } from 'src/app/services/form-service/form-service.service';
+import { Architecture, Channel, Node } from 'src/app/model/model';
+import { FormServiceService } from 'src/app/services/form-service/form-service.service';
 
 @Injectable()
 @Component({
@@ -11,11 +10,12 @@ import { Architecture, FormServiceService } from 'src/app/services/form-service/
   styleUrls: ['./form-component.component.css']
 })
 export class FormComponentComponent implements OnInit {
-  
-  inputRoute: string = "";
-  outputRoute: any;
 
-  constructor(public formService : FormServiceService) { }
+  inputRoute: string = "";
+  nodes: Node[] = new Array;
+  channels: Channel[] = new Array;
+
+  constructor(public formService: FormServiceService) { }
 
   ngOnInit(): void {
   }
@@ -26,15 +26,9 @@ export class FormComponentComponent implements OnInit {
     );
 
     this.formService.getArchitecture().subscribe(
-      (data : Architecture) => {
-        this.outputRoute = "Nodes : \n";
-        for (let node in data.nodes) 
-          this.outputRoute += "Node : " + node + "\n";
-
-        this.outputRoute += "Channels : \n";
-        for (let channel in data.channels) 
-          this.outputRoute += "Channel : " + channel + "\n";
-
+      (data: Architecture) => {
+        this.nodes = data.nodes;
+        this.channels = data.channels;
       }
     );
   }

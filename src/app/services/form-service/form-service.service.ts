@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Architecture {
-  nodes: [];
-  channels: [];
-}
+import { Architecture } from 'src/app/model/model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +14,6 @@ export class FormServiceService {
 
   postRoute(inputRoute : string) : Observable<any> {
     return this.http.post(this.POST_URL, {"route" : inputRoute});
-
-    // var headers : HttpHeaders = new HttpHeaders();
-    // this.createHeaders(headers);
-    // var response = this.http.get<HttpResponse<Architecture>>(this.GET_URL, {headers : headers});
-    
-    // //TODO from observable to string
-    // //TODO guardare tutorial online su Angular HTTP requests
-
-    // response.subscribe((data: HttpResponse<Architecture>) => this.outputRoute = data.body?.nodes.length);
   }
 
   getArchitecture() : Observable<Architecture> {

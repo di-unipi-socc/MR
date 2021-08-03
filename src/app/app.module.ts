@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FormComponentComponent } from './components/form-component/form-component.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponentComponent
+    FormComponentComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule
