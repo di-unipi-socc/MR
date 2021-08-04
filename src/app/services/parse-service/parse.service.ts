@@ -6,7 +6,7 @@ import { Architecture } from 'src/app/model/model';
 @Injectable({
   providedIn: 'root'
 })
-export class FormServiceService {
+export class ParseService {
   readonly POST_URL = 'http://localhost:8080/api/parser/route';
   readonly GET_URL = 'http://localhost:8080/api/parser/integration';
 
