@@ -23,6 +23,12 @@ export class AppComponent implements OnInit {
   onParse(inputRoute: string) {
     this.inputRoute = inputRoute;
 
+    var paras = document.getElementsByClassName('jtk-connector');
+
+    while(paras[0]) {
+        paras[0].parentNode?.removeChild(paras[0]);
+    }​
+
     this.parseService.postRoute(this.inputRoute).subscribe(
       success => {
         this.parseService.getArchitecture().subscribe(
