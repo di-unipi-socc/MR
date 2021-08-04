@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Node, Channel } from 'src/app/model/model';
+import { AfterViewInit, Component, Input, Output, EventEmitter } from '@angular/core';
+import { Node, Channel, Architecture } from 'src/app/model/model';
 
 import { jsPlumb, jsPlumbInstance } from 'jsplumb';
-
-//TODO importare JSPLUMB Community e creare un esempio di grafo con due nodi e un canale
+import { MatDialog } from '@angular/material/dialog';
+import { AddTypeDialogComponent } from '../add-type-dialog/add-type-dialog.component';
 
 @Component({
   selector: 'app-graph',
@@ -16,7 +16,11 @@ export class GraphComponent implements AfterViewInit {
   @Input() channels: Channel[] = [];
   initialized:boolean = false;
 
-  constructor() { }
+  plumbIns: jsPlumbInstance = jsPlumb.getInstance();
+
+  @Output() analyze = new EventEmitter<Architecture>();
+
+  constructor(public dialog: MatDialog) { }
 
   ngAfterViewInit() {
     this.createGraph();
@@ -28,12 +32,11 @@ export class GraphComponent implements AfterViewInit {
   }
 
   createGraph() {
-    let plumbIns = jsPlumb.getInstance();
-    plumbIns.deleteEveryConnection();
-    plumbIns.repaintEverything();
-    plumbIns.ready(() => {
+    this.plumbIns.deleteEveryConnection();
+    this.plumbIns.repaintEverything();
+    this.plumbIns.ready(() => {
       for (let channels of this.channels) {
-        this.createChannel(plumbIns, channels.source.toString(), channels.dest.toString());
+        this.createChannel(this.plumbIns, channels.source.toString(), channels.dest.toString());
       }
     });
   }
@@ -51,6 +54,33 @@ export class GraphComponent implements AfterViewInit {
       // paintStyle: { stroke: '#909399', strokeWidth: 2 }, // connector
       // endpointStyle: { fill: '#909399', outlineStroke: '#606266', outlineWidth: 1 } // endpoint
     });
-    console.log(plumbIns.getAllConnections().length);
   }
+
+  openDialog(channelIndex: number) {
+    const dialogRef = this.dialog.open(AddTypeDialogComponent, {
+      width: '750px',
+      data: {
+        id: channelIndex,
+        source: this.channels[channelIndex].source,
+        dest: this.channels[channelIndex].dest,
+        sourceType: this.channels[channelIndex].sourceType,
+        destType: this.channels[channelIndex].destType
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.channels[result.id].sourceType = result.sourceType;
+      this.channels[result.id].destType = result.destType;
+    });
+  }
+
+  analyzeArchitecture() {
+    this.analyze.emit(
+      new Architecture(
+        this.nodes,
+        this.channels
+      )
+    );
+  }
+
 }

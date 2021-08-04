@@ -5,15 +5,11 @@
 </div>
 <div class="channelTable">
     <div class="channel" *ngFor="let channel of channels; let i = index;">
-        <textarea name="source_i" id="source_i" cols="30" rows="10" class="source">{{ channel.source }}</textarea>
-        <div class="sourceType">
-            <textarea name="current_dest_i" id="current_source_i" cols="30" rows="10"  class="sourceType">{{ channel.sourceType }}</textarea>
-            <button class="addType">Edit</button>
-        </div>
-        <textarea name="dest_i" id="dest_i" cols="30" rows="10" class="dest">{{ channel.dest }}</textarea>
-        <div class="destType">
-            <textarea name="current_dest_i" id="current_dest_i" cols="30" rows="10"  class="destType">{{ channel.destType }}</textarea>
-            <button class="addType">Edit</button>
-        </div>
+        <span name="source_i" id="source_i" cols="30" rows="10" class="source">{{ channel.source }}</span>
+        <span name="current_dest_i" id="current_source_i" cols="30" rows="10">{{ channel.sourceType }}</span>
+        <span name="dest_i" id="dest_i" cols="30" rows="10">{{ channel.dest }}</span>
+        <span name="current_dest_i" id="current_dest_i" cols="30" rows="10">{{ channel.destType }}</span>
+        <button class="addType" (click)="openDialog(i)">Edit</button>
     </div>
+    <button class="analyze" (click)="analyzeArchitecture()">Analyze Architecture</button>
 </div>

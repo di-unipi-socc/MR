@@ -20,6 +20,10 @@ export class ParseService {
     return this.http.get<Architecture>(this.GET_URL);
   }
 
+  analyzeArchitecture(architecture: Architecture){
+    return this.http.post(this.POST_URL, {"channels" : architecture.channels});
+  }
+
   createHeaders(headers : HttpHeaders) {
     headers.set('Content-Type', 'application/json');
     headers.set('Accept', 'application/json');

@@ -23,8 +23,9 @@
 }
 
 .channelTable {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
   text-align: center;
 }
 
@@ -35,8 +36,11 @@
   margin-right: auto;
 }
 
-.source, .dest, .sourceType, .destType {
-    width: 50px;
-    height: 20px;
+span {
+    width: 100px;
+    height: 70px;
     margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 4px;
+    border: 2px solid rgba(3, 3, 3, 0.05);
 }

@@ -18,8 +18,13 @@ export interface Node {
     destType: NamedType;
   }
   
-  export interface Architecture {
+  export class Architecture {
     nodes: Node[];
     channels: Channel[];
+
+    constructor(public n: Node[], public c: Channel[]) {
+      this.nodes = n;
+      this.channels = c;
+    }
   }
   
