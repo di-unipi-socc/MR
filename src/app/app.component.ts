@@ -8,17 +8,17 @@ import { ParseService } from './services/parse-service/parse.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  inputRoute:string = "";
-  
+  inputRoute: string = "";
+
   nodes: Node[] = new Array;
   channels: Channel[] = new Array;
   success: boolean = false;
 
   title = 'mismatchresolver-frontend';
 
-  constructor(public parseService: ParseService){}
+  constructor(public parseService: ParseService) { }
 
-  ngOnInit(){}
+  ngOnInit() { }
 
   onParse(inputRoute: string) {
     this.inputRoute = inputRoute;
@@ -39,7 +39,21 @@ export class AppComponent implements OnInit {
     );
   }
 
-  onAnalyze(architecture: Architecture){
-    this.parseService.analyzeArchitecture(architecture);
+  onAnalyze(architecture: Architecture) {
+    console.log("calling service");
+    this.parseService.analyzeArchitecture(architecture).subscribe(
+      success => {
+        this.parseService.getFixedArchitecture().subscribe(
+          (data: Architecture) => {
+            this.nodes = data.nodes;
+            this.channels = data.channels;
+            this.success = true;
+          }
+        );
+      },
+      error => {
+        alert("Error in communication with server, please retry");
+      }
+    );
   }
 }

@@ -75,12 +75,11 @@ export class GraphComponent implements AfterViewInit {
   }
 
   analyzeArchitecture() {
-    this.analyze.emit(
-      new Architecture(
-        this.nodes,
-        this.channels
-      )
+    let newArchitecture = new Architecture(
+      this.nodes,
+      this.channels
     );
+    this.analyze.emit(newArchitecture);
   }
 
 }
