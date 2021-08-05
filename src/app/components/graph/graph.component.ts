@@ -69,8 +69,8 @@ export class GraphComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.channels[result.id].sourceType = result.sourceType;
-      this.channels[result.id].destType = result.destType;
+      this.channels[result.id].sourceType = JSON.parse(result.sourceType);
+      this.channels[result.id].destType = JSON.parse(result.destType);
     });
   }
 
