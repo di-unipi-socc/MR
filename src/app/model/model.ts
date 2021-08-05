@@ -2,6 +2,7 @@ export interface NamedType {
     name: string;
     XMLType: string;
     typeSet: NamedType[];
+    type: string;
 }
 
 export interface Node {
@@ -21,17 +22,5 @@ export interface Node {
   export class Architecture {
     constructor(public nodes: Node[], public channels: Channel[]) {
     }
-
-    // toJSON() : string {
-    //   let json = "{ \"architecture\":";
-    //   json = json + "{";
-    //   json = json + "\"nodes\":{"
-    //   for(let node of this.nodes){
-    //     json = json + ""
-    //   }
-    //   json = json + "},";
-    //   json = json + "}";
-    //   return json;
-    // }
   }
   
