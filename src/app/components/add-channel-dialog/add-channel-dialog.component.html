@@ -1,0 +1,69 @@
+<h1 mat-dialog-title>Modify Channel Types</h1>
+<div mat-dialog-content>
+  <p>Channel {{ data.source }} -> {{ data.dest }}</p>
+  <table mat-table>
+    <th>
+      <tr>
+        <mat-form-field appearance="fill">
+          <mat-label>Source Type Name</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.name">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field appearance="fill">
+          <mat-label>Source Type XMLtype</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.XMLType">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field appearance="fill">
+          <mat-label>Source Type TypeSet</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.typeSet">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field appearance="fill">
+          <mat-label>Source Type Type</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.type">
+        </mat-form-field>
+      </tr>
+    </th>
+    <th>
+      <tr>
+      <mat-form-field appearance="fill">
+        <mat-label>Dest Type Name</mat-label>
+        <input matInput [(ngModel)]="data.destType.name">
+      </mat-form-field>
+    </tr>
+    <tr>
+      <mat-form-field appearance="fill">
+        <mat-label>Dest Type XMLType</mat-label>
+        <input matInput [(ngModel)]="data.destType.XMLType">
+      </mat-form-field>
+    </tr>
+    <tr>
+      <mat-form-field appearance="fill"> -->
+        <mat-label>Dest Type typeSet</mat-label>
+        <input matInput [(ngModel)]="data.destType.typeSet">
+        <!-- <div class="typeSet" *ngFor="let type of data.destType.typeSet">
+          <span>{{ type.name }}</span>
+          <span>{{ type.XMLType }}</span>
+          <span>{{ type.typeSet }}</span>
+          <span>{{ type.type }}</span>
+        </div>
+        <button class="addType" (click)="addTypeDialog(data.destType.typeSet)">Addtype</button> -->
+      </mat-form-field>
+    </tr>
+    <tr>
+      <mat-form-field appearance="fill">
+        <mat-label>Dest Type Type</mat-label>
+        <input matInput [(ngModel)]="data.destType.type">
+      </mat-form-field>
+    </tr>
+    </th>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Exit</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

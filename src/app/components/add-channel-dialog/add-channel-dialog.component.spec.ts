@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddTypeDialogComponent } from './add-type-dialog.component';
+import { AddChannelDialogComponent } from './add-channel-dialog.component';
 
-describe('AddTypeDialogComponent', () => {
-  let component: AddTypeDialogComponent;
-  let fixture: ComponentFixture<AddTypeDialogComponent>;
+describe('AddChannelDialogComponent', () => {
+  let component: AddChannelDialogComponent;
+  let fixture: ComponentFixture<AddChannelDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddTypeDialogComponent ]
+      declarations: [ AddChannelDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddTypeDialogComponent);
+    fixture = TestBed.createComponent(AddChannelDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

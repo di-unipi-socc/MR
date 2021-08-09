@@ -29,13 +29,11 @@ export class ParseService {
   analyzeArchitecture(architecture: Architecture) {
     let body = JSON.stringify(architecture);
     console.log("Body: " + body);
-    return this.http.post(this.ANALYZE_URL, body);
+    return this.http.post(
+      this.ANALYZE_URL, 
+      body, 
+      {'headers': {
+        'content-type': 'application/json'
+      }});
   }
-
-  createHeaders(headers: HttpHeaders) {
-    headers.set('Content-Type', 'application/json');
-    headers.set('Accept', 'application/json');
-    headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  }
-
 }

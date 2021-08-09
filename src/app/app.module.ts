@@ -9,7 +9,7 @@ import { GraphComponent } from './components/graph/graph.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from "@angular/material/dialog";
-import { AddTypeDialogComponent } from './components/add-type-dialog/add-type-dialog.component';
+import { AddChannelDialogComponent } from './components/add-channel-dialog/add-channel-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
@@ -19,7 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
     AppComponent,
     FormComponentComponent,
     GraphComponent,
-    AddTypeDialogComponent
+    AddChannelDialogComponent
   ],
   imports: [
     BrowserModule,

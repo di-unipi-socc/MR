@@ -11,13 +11,13 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-add-type-dialog',
-  templateUrl: './add-type-dialog.component.html',
-  styleUrls: ['./add-type-dialog.component.css']
+  selector: 'app-add-channel-dialog',
+  templateUrl: './add-channel-dialog.component.html',
+  styleUrls: ['./add-channel-dialog.component.css']
 })
-export class AddTypeDialogComponent implements OnInit {
+export class AddChannelDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddTypeDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<AddChannelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
@@ -25,6 +25,10 @@ export class AddTypeDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  addTypeDialog(typeSet: NamedType[]){
+
   }
 
 }

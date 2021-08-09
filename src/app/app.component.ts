@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   onAnalyze(architecture: Architecture) {
-    console.log("calling service");
     this.parseService.analyzeArchitecture(architecture).subscribe(
       success => {
         this.parseService.getFixedArchitecture().subscribe(

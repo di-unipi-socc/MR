@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, Input, Output, EventEmitter } from '@angular/core';
-import { Node, Channel, Architecture } from 'src/app/model/model';
+import { Node, Channel, Architecture, NamedType } from 'src/app/model/model';
 
 import { jsPlumb, jsPlumbInstance } from 'jsplumb';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTypeDialogComponent } from '../add-type-dialog/add-type-dialog.component';
+import { AddChannelDialogComponent } from '../add-channel-dialog/add-channel-dialog.component';
 
 @Component({
   selector: 'app-graph',
@@ -14,7 +14,8 @@ export class GraphComponent implements AfterViewInit {
 
   @Input() nodes: Node[] = [];
   @Input() channels: Channel[] = [];
-  initialized:boolean = false;
+  initialized: boolean = false;
+  changed: boolean = false;
 
   plumbIns: jsPlumbInstance = jsPlumb.getInstance();
 
@@ -27,16 +28,29 @@ export class GraphComponent implements AfterViewInit {
     this.initialized = true;
   }
 
+  ngAfterViewChecked() {
+    if (this.changed) {
+      this.changed = false;
+      this.createGraph();
+    }
+  }
+
   ngOnChanges() {
-    if (this.initialized) this.createGraph();
+    this.changed = true;
   }
 
   createGraph() {
     this.plumbIns.deleteEveryConnection();
     this.plumbIns.repaintEverything();
     this.plumbIns.ready(() => {
-      for (let channels of this.channels) {
-        this.createChannel(this.plumbIns, channels.source.toString(), channels.dest.toString());
+      for (let channel of this.channels) {
+        console.log("Source " + channel.source.toString() + " : " +
+          document.getElementById(channel.source.toString())
+        );
+        console.log("Dest " + channel.dest.toString() + " : " +
+          document.getElementById(channel.dest.toString())
+        );
+        this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString());
       }
     });
   }
@@ -57,14 +71,34 @@ export class GraphComponent implements AfterViewInit {
   }
 
   openDialog(channelIndex: number) {
-    const dialogRef = this.dialog.open(AddTypeDialogComponent, {
+
+    let sourceType = this.channels[channelIndex].sourceType;
+    let destType = this.channels[channelIndex].destType;
+
+    if (typeof sourceType === "undefined")
+      sourceType = new NamedType(
+        "newSource",
+        "",
+        [],
+        "simple"
+      );
+
+    if (typeof destType === "undefined")
+      destType = new NamedType(
+        "newDest",
+        "",
+        [],
+        "simple"
+      );
+
+    const dialogRef = this.dialog.open(AddChannelDialogComponent, {
       width: '750px',
       data: {
         id: channelIndex,
         source: this.channels[channelIndex].source,
         dest: this.channels[channelIndex].dest,
-        sourceType: this.channels[channelIndex].sourceType,
-        destType: this.channels[channelIndex].destType
+        sourceType: sourceType,
+        destType: destType
       }
     });
 
