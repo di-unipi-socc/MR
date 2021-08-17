@@ -14,7 +14,6 @@ export class GraphComponent implements AfterViewInit {
 
   @Input() nodes: Node[] = [];
   @Input() channels: Channel[] = [];
-  initialized: boolean = false;
   changed: boolean = false;
 
   plumbIns: jsPlumbInstance = jsPlumb.getInstance();
@@ -25,7 +24,6 @@ export class GraphComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.createGraph();
-    this.initialized = true;
   }
 
   ngAfterViewChecked() {
@@ -44,12 +42,6 @@ export class GraphComponent implements AfterViewInit {
     this.plumbIns.repaintEverything();
     this.plumbIns.ready(() => {
       for (let channel of this.channels) {
-        console.log("Source " + channel.source.toString() + " : " +
-          document.getElementById(channel.source.toString())
-        );
-        console.log("Dest " + channel.dest.toString() + " : " +
-          document.getElementById(channel.dest.toString())
-        );
         this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString());
       }
     });
@@ -103,6 +95,8 @@ export class GraphComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      result.sourceType.typeSet = JSON.parse(result.sourceType.typeSet);
+      result.destType.typeSet = JSON.parse(result.destType.typeSet);
       this.channels[result.id].sourceType = JSON.parse(result.sourceType);
       this.channels[result.id].destType = JSON.parse(result.destType);
     });

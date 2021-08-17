@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Node, Architecture, Channel } from './model/model';
+import { Node, Architecture, Channel, NamedType } from './model/model';
 import { ParseService } from './services/parse-service/parse.service';
 
 @Component({
@@ -29,6 +29,12 @@ export class AppComponent implements OnInit {
           (data: Architecture) => {
             this.nodes = data.nodes;
             this.channels = data.channels;
+            for (let channel of this.channels) {
+              if (typeof channel.sourceType === "undefined")
+                channel.sourceType = new NamedType("empty", "empty", [], "empty");
+              if (typeof channel.destType === "undefined")
+                channel.destType = new NamedType("empty", "empty", [], "empty");
+            }
             this.success = true;
           }
         );
@@ -46,6 +52,13 @@ export class AppComponent implements OnInit {
           (data: Architecture) => {
             this.nodes = data.nodes;
             this.channels = data.channels;
+            for (let channel of this.channels) {
+              console.log(channel);
+              if (typeof channel.sourceType === "undefined")
+                channel.sourceType = new NamedType("empty", "empty", [], "empty");
+              if (typeof channel.destType === "undefined")
+                channel.destType = new NamedType("empty", "empty", [], "empty");
+            }
             this.success = true;
           }
         );

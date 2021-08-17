@@ -11,14 +11,14 @@
       </tr>
       <tr>
         <mat-form-field appearance="fill">
-          <mat-label>Source Type XMLtype</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.XMLType">
+          <mat-label>Source Type xmltype</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.xmltype">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field appearance="fill">
-          <mat-label>Source Type TypeSet</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.typeSet">
+          <mat-label>Source Type Typeset</mat-label>
+          <input matInput [(ngModel)]="data.sourceType.typeset">
         </mat-form-field>
       </tr>
       <tr>
@@ -37,21 +37,14 @@
     </tr>
     <tr>
       <mat-form-field appearance="fill">
-        <mat-label>Dest Type XMLType</mat-label>
-        <input matInput [(ngModel)]="data.destType.XMLType">
+        <mat-label>Dest Type xmltype</mat-label>
+        <input matInput [(ngModel)]="data.destType.xmltype">
       </mat-form-field>
     </tr>
     <tr>
-      <mat-form-field appearance="fill"> -->
-        <mat-label>Dest Type typeSet</mat-label>
-        <input matInput [(ngModel)]="data.destType.typeSet">
-        <!-- <div class="typeSet" *ngFor="let type of data.destType.typeSet">
-          <span>{{ type.name }}</span>
-          <span>{{ type.XMLType }}</span>
-          <span>{{ type.typeSet }}</span>
-          <span>{{ type.type }}</span>
-        </div>
-        <button class="addType" (click)="addTypeDialog(data.destType.typeSet)">Addtype</button> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Dest Type typeset</mat-label>
+        <input matInput [(ngModel)]="data.destType.typeset">
       </mat-form-field>
     </tr>
     <tr>

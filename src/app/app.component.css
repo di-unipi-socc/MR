@@ -1,8 +1,11 @@
 body {
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin: auto;
+    font-family: 'Oswald', Helvetica;
 }
 
 h1 {
     margin: auto;
+    font-family: 'Oswald', Helvetica;
 }

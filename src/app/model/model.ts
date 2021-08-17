@@ -5,18 +5,18 @@ export class NamedType {
   // type: string;
 
   constructor(
-    public name:string, public XMLType:string,
-    public typeSet: NamedType[], public type:string
+    public name:string, public xmltype:string,
+    public typeset: NamedType[], public type:string
   ){}
 
   toString(): string {
     let result = "{" +
       "\"name\":\"" + this.name + "\"," +
-      "\"XMLType\":\"" + this.XMLType + "\"," +
+      "\"XMLType\":\"" + this.xmltype + "\"," +
       "\"typeSet\": [";
 
-    for (let type in this.typeSet) {
-      result = result + this.typeSet.toString();
+    for (let type in this.typeset) {
+      result = result + this.typeset.toString();
     }
 
     result = result + "], " +
