@@ -11,7 +11,12 @@
   padding: 30px 0px 30px 0px;
 }
 
-.node, .integrationNode {
+.nodeLine {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.nodeLine, .integrationNode {
   text-align: center;
   margin-left: 20px;
   margin-right: 20px;
@@ -21,17 +26,13 @@
 .integrationNode {
   width: 80px;
   height: 40px;
-  color: #606266;
-  background: #f6f6f6;
-  border: 2px solid rgba(0, 0, 0, 0.05);
+  color: #000000;
+  background: #c1fa8b;
+  border: 2px solid rgb(0, 94, 5);
   text-align: center;
   line-height: 40px;
   font-family: 'Oswald', Helvetica;
   border-radius: 4px;
-}
-
-.node {
-  display: flex;
 }
 
 .channelTable {

@@ -13,12 +13,39 @@ export class AppComponent implements OnInit {
   nodes: Node[] = new Array;
   channels: Channel[] = new Array;
   success: boolean = false;
+  lines: number[][] = [];
 
   title = 'mismatchresolver-frontend';
 
   constructor(public parseService: ParseService) { }
 
   ngOnInit() { }
+
+  createLines() {
+    this.lines = [];
+    let set_ids = [];
+    this.lines.push([]);
+    this.lines[0].push(this.channels[0].source);
+    set_ids.push(this.channels[0].source);
+    for (let c of this.channels) {
+      let s = c.source;
+      let i = 0;
+      for (let c2 of this.channels) {
+        if (s === c2.source) {
+          while (this.lines.length <= i) {
+            this.lines.push([]);
+            for (let j=0; j<this.lines[this.lines.length-2].length-1;j++)
+              this.lines[this.lines.length-1].push(-1);
+          }
+          if (set_ids.indexOf(c2.dest) < 0) {
+            this.lines[i].push(c2.dest);
+            set_ids.push(c2.dest);
+          }
+          i++;
+        }
+      }
+    }
+  }
 
   onParse(inputRoute: string) {
     this.inputRoute = inputRoute;
@@ -35,6 +62,7 @@ export class AppComponent implements OnInit {
               if (typeof channel.destType === "undefined")
                 channel.destType = new NamedType("empty", "empty", [], "empty");
             }
+            this.createLines();
             this.success = true;
           }
         );
@@ -59,6 +87,7 @@ export class AppComponent implements OnInit {
               if (typeof channel.destType === "undefined")
                 channel.destType = new NamedType("empty", "empty", [], "empty");
             }
+            this.createLines();
             this.success = true;
           }
         );

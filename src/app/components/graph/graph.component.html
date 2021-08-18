@@ -1,6 +1,6 @@
 <div id="graph" class="graph" (change)="createGraph()">
-    <div class="node">
-        <div id="{{ node.id }}" class="integrationNode" *ngFor="let node of nodes;">{{ node.id }}</div>
+    <div class="nodeLine" *ngFor="let line of lines;">
+        <div id="{{ node }}" [style] = "node < 0 ? 'visibility:hidden;' : ''" class="integrationNode" *ngFor="let node of line;">{{ node }}</div>
     </div>
 </div>
 <table class="channelTable">

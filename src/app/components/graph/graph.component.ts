@@ -15,6 +15,7 @@ export class GraphComponent implements AfterViewInit {
   @Input() nodes: Node[] = [];
   @Input() channels: Channel[] = [];
   changed: boolean = false;
+  @Input() lines: number[][] = [];
 
   plumbIns: jsPlumbInstance = jsPlumb.getInstance();
 
