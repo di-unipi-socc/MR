@@ -24,8 +24,8 @@
 }
 
 .integrationNode {
-  width: 80px;
-  height: 40px;
+  width: 100px;
+  height: fit-content;
   color: #000000;
   background: #c1fa8b;
   border: 2px solid rgb(0, 94, 5);
@@ -46,17 +46,11 @@
 
 .channelTable .channel tr {
   background-color: #ffffff;
-  color: #020202;
   text-align: left;
 }
 
 .channelTable .channel tr:last-of-type {
   border-bottom: 2px solid #ffffff;
-}
-
-.channelTable .channel tr.active-row {
-  font-weight: bold;
-  color: #ffffff;
 }
 
 .channelTable th {

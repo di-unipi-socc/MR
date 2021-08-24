@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   nodes: Node[] = new Array;
   channels: Channel[] = new Array;
+  mismatches: Channel[] = new Array;
   success: boolean = false;
   lines: number[][] = [];
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     this.lines = [];
     let set_ids = [];
     this.lines.push([]);
-    this.lines[0].push(this.channels[0].source);
+    this.lines[0].push(0);
     set_ids.push(this.channels[0].source);
     for (let c of this.channels) {
       let s = c.source;
@@ -80,8 +81,10 @@ export class AppComponent implements OnInit {
           (data: Architecture) => {
             this.nodes = data.nodes;
             this.channels = data.channels;
+            this.mismatches = data.mismatches;
+            console.log("FIXED ARCHITECTURE RECEIVED WITH BODY : ");
+            console.log(data);
             for (let channel of this.channels) {
-              console.log(channel);
               if (typeof channel.sourceType === "undefined")
                 channel.sourceType = new NamedType("empty", "empty", [], "empty");
               if (typeof channel.destType === "undefined")

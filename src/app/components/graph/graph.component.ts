@@ -14,6 +14,7 @@ export class GraphComponent implements AfterViewInit {
 
   @Input() nodes: Node[] = [];
   @Input() channels: Channel[] = [];
+  @Input() mismatches: Channel[] = [];
   changed: boolean = false;
   @Input() lines: number[][] = [];
 
@@ -22,7 +23,6 @@ export class GraphComponent implements AfterViewInit {
   @Output() analyze = new EventEmitter<Architecture>();
 
   constructor(public dialog: MatDialog) { }
-
   ngAfterViewInit() {
     this.createGraph();
   }
@@ -84,6 +84,12 @@ export class GraphComponent implements AfterViewInit {
         "simple"
       );
 
+    console.log("OPENING DIALOG FOR CHANNEL : " + channelIndex);
+    console.log("SOURCE : " + this.channels[channelIndex].source);
+    console.log("DEST : " + this.channels[channelIndex].dest);
+    console.log("SOURCETYPE : " + sourceType);
+    console.log("DESTTYPE : " + destType);
+
     const dialogRef = this.dialog.open(AddChannelDialogComponent, {
       width: '750px',
       data: {
@@ -96,8 +102,8 @@ export class GraphComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      result.sourceType.typeSet = JSON.parse(result.sourceType.typeSet);
-      result.destType.typeSet = JSON.parse(result.destType.typeSet);
+      console.log("DIALOG CLOSED WITH RESULT : ");
+      console.log(result);
       this.channels[result.id].sourceType = JSON.parse(result.sourceType);
       this.channels[result.id].destType = JSON.parse(result.destType);
     });
@@ -106,9 +112,24 @@ export class GraphComponent implements AfterViewInit {
   analyzeArchitecture() {
     let newArchitecture = new Architecture(
       this.nodes,
-      this.channels
+      this.channels,
+      []
     );
     this.analyze.emit(newArchitecture);
   }
 
+  getNodeById(id: number): Node | null {
+    for (let node of this.nodes)
+      if (node.id === id) return node;
+
+    return null;
+  }
+
+  isAMismatch(channel: Channel): boolean {
+    for (let m of this.mismatches){
+      if (m.equals(channel))
+        return true;
+    }
+    return false;
+  }
 }

@@ -18,7 +18,10 @@ export interface DialogData {
 export class AddChannelDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddChannelDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      console.log("OPENING DIALOG WITH DATA : ");
+      console.log(data);
+     }
 
   ngOnInit(): void {
   }
@@ -26,9 +29,4 @@ export class AddChannelDialogComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  addTypeDialog(typeSet: NamedType[]){
-
-  }
-
 }
