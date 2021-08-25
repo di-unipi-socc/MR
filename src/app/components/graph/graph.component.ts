@@ -40,16 +40,19 @@ export class GraphComponent implements AfterViewInit {
 
   createGraph() {
     this.plumbIns.deleteEveryConnection();
-    this.plumbIns.repaintEverything();
     this.plumbIns.ready(() => {
       for (let channel of this.channels) {
-        this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString());
+        if (this.isAMismatch(channel))
+          this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow-mismatch');
+        else
+          this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow');
       }
     });
+    this.plumbIns.repaintEverything();
   }
 
-  createChannel(plumbIns: jsPlumbInstance, sourceID: string, destID: string): void {
-    plumbIns.connect({
+  createChannel(plumbIns: jsPlumbInstance, sourceID: string, destID: string, css: string): void {
+    var c = plumbIns.connect({
       // corresponding to the above basic concepts
       source: sourceID,
       target: destID,
@@ -57,6 +60,7 @@ export class GraphComponent implements AfterViewInit {
       connector: 'StateMachine',
       endpoint: 'Blank',
       overlays: [['Arrow', { width: 8, length: 8, location: 1 }]], // overlay
+      cssClass: css
       // add style
       // paintStyle: { stroke: '#909399', strokeWidth: 2 }, // connector
       // endpointStyle: { fill: '#909399', outlineStroke: '#606266', outlineWidth: 1 } // endpoint
@@ -127,8 +131,63 @@ export class GraphComponent implements AfterViewInit {
 
   isAMismatch(channel: Channel): boolean {
     for (let m of this.mismatches){
-      if (m.equals(channel))
+      if (this.channelEquality(m, channel))
         return true;
+    }
+    return false;
+  }
+
+  stringifyChannel(channel: Channel): string {
+    let result = "{" +
+      "\"source\":\"" + channel.source + "\"," +
+      "\"sourceType\":" + channel.sourceType.toString() + "," +
+      "\"dest\":\"" + channel.dest + "\"," +
+      "\"destType\":" + channel.destType.toString() + "}";
+      
+    return result;
+  }
+
+  channelEquality(c1: Channel, c2:Channel): boolean {
+    if (c1.source === c2.source &&
+      c1.dest === c2.dest &&
+      this.typeEquality(c1.sourceType, c2.sourceType) &&
+      this.typeEquality(c1.destType, c2.destType))
+    return true;
+    else return false;
+  }
+
+  stringifyType(type: NamedType): string {
+    let result = "{" +
+      "\"name\":\"" + type.name + "\"," +
+      "\"xmltype\":\"" + type.xmltype + "\"," +
+      "\"typeset\": [";
+
+    for (let t of type.typeset) {
+      result = result + t.toString();
+    }
+
+    result = result + "], " +
+      "\"type\":\"" + type.type + "\"" + "}";
+
+    return result;
+  }
+
+  typeEquality(t1: NamedType, t2:NamedType): boolean {
+    if (t1.name === t2.name &&
+      t1.type === t2.type){
+          if (t2.type === 'simple'){ 
+              if (t2.xmltype === t1.xmltype) return true;
+              else return false;
+          }else{
+            for (let t of t1.typeset) {
+              let found = false;
+              for (let k of t2.typeset){
+                if (t.equals(k)){ found = true; break; }
+              }
+              if (!found) return false;
+            }
+            return true;
+          }
     }
     return false;
   }

@@ -27,7 +27,6 @@ export class NamedType {
               if (this.xmltype === n.xmltype) return true;
               else return false;
           }else{
-            let equals = false;
             for (let t1 of n.typeset) {
               let found = false;
               for (let t2 of this.typeset){

@@ -46,6 +46,8 @@ export class AppComponent implements OnInit {
         }
       }
     }
+    console.log("LINES CREATED : ");
+    console.log(this.lines);
   }
 
   onParse(inputRoute: string) {

@@ -24,7 +24,8 @@
 }
 
 .integrationNode {
-  width: 100px;
+  width: fit-content;
+  min-width: 120px;
   height: fit-content;
   color: #000000;
   background: #c1fa8b;
@@ -75,4 +76,16 @@ button {
 
 .analyze {
   margin-bottom: 10px;
+}
+
+.arrow {
+  color: black;
+  fill: black;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.arrow-mismatch {
+  stroke: red;
+  stroke-width: 2;
 }
