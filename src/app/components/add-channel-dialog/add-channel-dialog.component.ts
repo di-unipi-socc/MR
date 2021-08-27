@@ -1,13 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Host, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NamedType } from 'src/app/model/model';
 
 export interface DialogData {
   id: number;
-  source: number;
-  sourceType: NamedType;
-  dest: number;
-  destType: NamedType;
+  source: string;
+  sourceType_name: string;
+  sourceType_xmltype: string;
+  sourceType_typeset: string;
+  sourceType_type: string;
+  dest: string;
+  destType_name: string;
+  destType_xmltype: string;
+  destType_typeset: string;
+  destType_type: string;
 }
 
 @Component({

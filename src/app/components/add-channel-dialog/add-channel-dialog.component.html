@@ -1,30 +1,30 @@
 <h1 mat-dialog-title>Modify Channel Types</h1>
 <div mat-dialog-content>
-  <p>Channel {{ data.source }} -> {{ data.dest }}</p>
+  <p>Channel [{{ data.source }}] ----> [{{ data.dest }}]</p>
   <table mat-table>
     <th>
       <tr>
         <mat-form-field appearance="fill">
           <mat-label>Source Type Name</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.name">
+          <input matInput [(ngModel)]="data.sourceType_name">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field appearance="fill">
           <mat-label>Source Type xmltype</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.xmltype">
+          <input matInput [(ngModel)]="data.sourceType_xmltype">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field appearance="fill">
           <mat-label>Source Type Typeset</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.typeset">
+          <input matInput [(ngModel)]="data.sourceType_typeset">
         </mat-form-field>
       </tr>
       <tr>
         <mat-form-field appearance="fill">
           <mat-label>Source Type Type</mat-label>
-          <input matInput [(ngModel)]="data.sourceType.type">
+          <input matInput [(ngModel)]="data.sourceType_type">
         </mat-form-field>
       </tr>
     </th>
@@ -32,25 +32,25 @@
       <tr>
       <mat-form-field appearance="fill">
         <mat-label>Dest Type Name</mat-label>
-        <input matInput [(ngModel)]="data.destType.name">
+        <input matInput [(ngModel)]="data.destType_name">
       </mat-form-field>
     </tr>
     <tr>
       <mat-form-field appearance="fill">
         <mat-label>Dest Type xmltype</mat-label>
-        <input matInput [(ngModel)]="data.destType.xmltype">
+        <input matInput [(ngModel)]="data.destType_xmltype">
       </mat-form-field>
     </tr>
     <tr>
       <mat-form-field appearance="fill">
         <mat-label>Dest Type typeset</mat-label>
-        <input matInput [(ngModel)]="data.destType.typeset">
+        <input matInput [(ngModel)]="data.destType_typeset">
       </mat-form-field>
     </tr>
     <tr>
       <mat-form-field appearance="fill">
         <mat-label>Dest Type Type</mat-label>
-        <input matInput [(ngModel)]="data.destType.type">
+        <input matInput [(ngModel)]="data.destType_type">
       </mat-form-field>
     </tr>
     </th>

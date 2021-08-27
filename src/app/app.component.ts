@@ -27,22 +27,49 @@ export class AppComponent implements OnInit {
     let set_ids = [];
     this.lines.push([]);
     this.lines[0].push(0);
-    set_ids.push(this.channels[0].source);
+    set_ids.push(0);
     for (let c of this.channels) {
       let s = c.source;
       let i = 0;
-      for (let c2 of this.channels) {
-        if (s === c2.source) {
-          while (this.lines.length <= i) {
-            this.lines.push([]);
-            for (let j=0; j<this.lines[this.lines.length-2].length-1;j++)
-              this.lines[this.lines.length-1].push(-1);
+      let childs_count = 0;
+      for (let c1 of this.channels) {
+        if (s === c1.source) childs_count++;
+      }
+      if (childs_count === 1) {
+        let parent_line = -1;
+        for (let line of this.lines) {
+          for (let node of line) {
+            if (s === node) {
+              parent_line = this.lines.indexOf(line);
+              break;
+            }
           }
-          if (set_ids.indexOf(c2.dest) < 0) {
-            this.lines[i].push(c2.dest);
-            set_ids.push(c2.dest);
+          if (parent_line >= 0) break;
+        }
+        if (set_ids.indexOf(c.dest) < 0 && parent_line >= 0) {
+          this.lines[parent_line].push(c.dest);
+          set_ids.push(c.dest);
+        }else{
+          if (set_ids.indexOf(c.dest) < 0) {
+            this.lines[i].push(c.dest);
+            set_ids.push(c.dest);
           }
           i++;
+        }
+      } else {
+        for (let c2 of this.channels) {
+          if (s === c2.source) {
+            while (this.lines.length <= i) {
+              this.lines.push([]);
+              for (let j = 0; j < this.lines[this.lines.length - 2].length - 1; j++)
+                this.lines[this.lines.length - 1].push(-1);
+            }
+            if (set_ids.indexOf(c2.dest) < 0) {
+              this.lines[i].push(c2.dest);
+              set_ids.push(c2.dest);
+            }
+            i++;
+          }
         }
       }
     }

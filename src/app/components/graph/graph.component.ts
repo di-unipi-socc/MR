@@ -94,22 +94,44 @@ export class GraphComponent implements AfterViewInit {
     console.log("SOURCETYPE : " + sourceType);
     console.log("DESTTYPE : " + destType);
 
+    let sourceTypeSet = "[";
+    for (let t of sourceType.typeset) sourceTypeSet = sourceTypeSet + this.stringifyType(t);
+    sourceTypeSet = sourceTypeSet + "]";
+
+    let destTypeSet = "[";
+    for (let t of destType.typeset) destTypeSet = destTypeSet + this.stringifyType(t);
+    destTypeSet = destTypeSet + "]";
+
     const dialogRef = this.dialog.open(AddChannelDialogComponent, {
       width: '750px',
       data: {
         id: channelIndex,
-        source: this.channels[channelIndex].source,
-        dest: this.channels[channelIndex].dest,
-        sourceType: sourceType,
-        destType: destType
+        source: this.getNodeById(this.channels[channelIndex].source)?.sort,
+        dest: this.getNodeById(this.channels[channelIndex].dest)?.sort,
+        sourceType_name: sourceType.name,
+        sourceType_xmltype: sourceType.xmltype,
+        sourceType_typeset: sourceTypeSet,
+        sourceType_type: sourceType.type,
+        destType_name: destType.name,
+        destType_xmltype: destType.xmltype,
+        destType_typeset: destTypeSet,
+        destType_type: destType.type
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("DIALOG CLOSED WITH RESULT : ");
       console.log(result);
-      this.channels[result.id].sourceType = JSON.parse(result.sourceType);
-      this.channels[result.id].destType = JSON.parse(result.destType);
+      this.channels[result.id].sourceType.name = result.sourceType_name;
+      this.channels[result.id].sourceType.xmltype = result.sourceType_xmltype;
+      this.channels[result.id].sourceType.typeset = JSON.parse(result.sourceType_typeset);
+      this.channels[result.id].sourceType.type = result.sourceType_type;
+      this.channels[result.id].destType.name = result.destType_name;
+      this.channels[result.id].destType.xmltype = result.destType_xmltype;
+      this.channels[result.id].destType.typeset = JSON.parse(result.destType_typeset);
+      this.channels[result.id].destType.type = result.destType_type;
+      // this.channels[result.id].sourceType = JSON.parse(result.sourceType);
+      // this.channels[result.id].destType = JSON.parse(result.destType);
     });
   }
 
@@ -163,7 +185,7 @@ export class GraphComponent implements AfterViewInit {
       "\"typeset\": [";
 
     for (let t of type.typeset) {
-      result = result + t.toString();
+      result = result + this.stringifyType(t);
     }
 
     result = result + "], " +
@@ -182,7 +204,7 @@ export class GraphComponent implements AfterViewInit {
             for (let t of t1.typeset) {
               let found = false;
               for (let k of t2.typeset){
-                if (t.equals(k)){ found = true; break; }
+                if (this.typeEquality(t,k)){ found = true; break; }
               }
               if (!found) return false;
             }
