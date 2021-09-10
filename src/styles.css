@@ -2,3 +2,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; }
+
+.arrow > * {
+    color: black;
+    fill: black;
+    stroke: black;
+    stroke-width: 1;
+  }
+  
+  .arrow-mismatch > * {
+    color: red;
+    fill: red;
+    stroke: red;
+    stroke-width: 1;
+  }

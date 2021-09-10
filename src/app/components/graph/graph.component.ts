@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Node, Channel, Architecture, NamedType } from 'src/app/model/model';
 
 import { jsPlumb, jsPlumbInstance } from 'jsplumb';
@@ -36,19 +36,20 @@ export class GraphComponent implements AfterViewInit {
 
   ngOnChanges() {
     this.changed = true;
+    this.cleanUI();
   }
 
   createGraph() {
+    this.plumbIns.deleteEveryEndpoint();
     this.plumbIns.deleteEveryConnection();
-    this.plumbIns.ready(() => {
-      for (let channel of this.channels) {
-        if (this.isAMismatch(channel))
-          this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow-mismatch');
-        else
-          this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow');
-      }
-    });
-    this.plumbIns.repaintEverything();
+    // this.plumbIns.ready(() => {})
+    for (let channel of this.channels) {
+      if (this.isAMismatch(channel))
+        this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow-mismatch');
+      else
+        this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow');
+    }
+    // this.plumbIns.repaintEverything();
   }
 
   createChannel(plumbIns: jsPlumbInstance, sourceID: string, destID: string, css: string): void {
@@ -120,6 +121,7 @@ export class GraphComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (typeof result === 'undefined') {return;}
       console.log("DIALOG CLOSED WITH RESULT : ");
       console.log(result);
       this.channels[result.id].sourceType.name = result.sourceType_name;
@@ -130,6 +132,8 @@ export class GraphComponent implements AfterViewInit {
       this.channels[result.id].destType.xmltype = result.destType_xmltype;
       this.channels[result.id].destType.typeset = JSON.parse(result.destType_typeset);
       this.channels[result.id].destType.type = result.destType_type;
+      console.log("MISMATCHES AFTER DIALOG CLOSE BEFORE CALLING");
+      console.log(this.mismatches);
       // this.channels[result.id].sourceType = JSON.parse(result.sourceType);
       // this.channels[result.id].destType = JSON.parse(result.destType);
     });
@@ -212,5 +216,20 @@ export class GraphComponent implements AfterViewInit {
           }
     }
     return false;
+  }
+
+  cleanUI() {
+    var elements = document.getElementsByClassName("nodeLine");
+    while(elements.length > 0) {
+        if(elements[0].parentNode != null) {
+          elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+  }
+
+  @HostListener('window:resize', [])
+  onResize() {
+    console.log("resize");
+    this.plumbIns.repaintEverything();
   }
 }

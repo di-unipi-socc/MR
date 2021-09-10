@@ -22,7 +22,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { }
 
+  orderChannels() {
+    this.channels.sort((x, y) => {
+      return x.source - y.source
+    });
+  }
+
   createLines() {
+    this.orderChannels();
     this.lines = [];
     let set_ids = [];
     this.lines.push([]);
@@ -94,6 +101,7 @@ export class AppComponent implements OnInit {
             }
             this.createLines();
             this.success = true;
+            this.mismatches = new Array;
           }
         );
       },
