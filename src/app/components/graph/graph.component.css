@@ -5,14 +5,13 @@
 
 .graph {
   text-align: center;
-  margin-left: 15%;
   margin-right: 15%;
   width: 70%;
   padding: 30px 0px 30px 0px;
 }
 
 .nodeLine {
-  display: flex;
+  display: inline-flex;
   margin-bottom: 20px;
 }
 
@@ -25,8 +24,10 @@
 
 .integrationNode {
   min-width: 150px;
+  width: fit-content;
   max-width: 150px;
   height: fit-content;
+  overflow-wrap: break-word;
   min-height: 40px;
   color: #000000;
   background: #c1fa8b;
@@ -45,6 +46,7 @@
   max-width: 80%;
   border: 2px solid #000000;
   border-radius: 25px;
+  margin-top: 20px;
 }
 
 .channelTable .channel tr {
@@ -74,19 +76,7 @@ button {
 }
 
 .analyze {
+  margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.arrow > * {
-  color: black;
-  fill: black;
-  stroke: black;
-  stroke-width: 2;
-}
-
-.arrow-mismatch > * {
-  color: red;
-  fill: red;
-  stroke: red;
-  stroke-width: 2;
+  margin-left: 20px;
 }

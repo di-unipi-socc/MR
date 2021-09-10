@@ -1,28 +1,42 @@
 <div id="graph" class="graph" (change)="createGraph()">
     <div class="nodeLine" *ngFor="let line of lines;">
         <div id="{{ node }}" [style]="node < 0 ? 'visibility:hidden;' : ''" class="integrationNode"
-            *ngFor="let node of line;">{{ getNodeById(node)?.sort }}</div>
+            *ngFor="let node of line;">{{ getNodeById(node)?.sort }}
+        </div>
     </div>
 </div>
-<table class="channelTable">
-    <div class="channel" *ngFor="let channel of channels; let i = index;" >
-        <tr [ngStyle]="{color: (isAMismatch(channel)) ? '#ff0000' : '#000000'}">
-            <th>
-                <span name="source_i" id="source_i" cols="30" rows="10" class="source">{{ getNodeById(channel.source)?.sort }}</span>
-            </th>
-            <th>
-                <span style="color: gray;" name="current_dest_i" id="current_source_i" cols="30" rows="10">{{ stringifyType(channel.sourceType) }}</span>
-            </th>
-            <th>
-                <span name="dest_i" id="dest_i" cols="30" rows="10">{{ getNodeById(channel.dest)?.sort }}</span>
-            </th>
-            <th>
-                <span style="color: gray;" name="current_dest_i" id="current_dest_i" cols="30" rows="10">{{ stringifyType(channel.destType) }}</span>
-            </th>
-            <th>
-                <button class="addType" (click)="openDialog(i)">Edit</button>
-            </th>
-        </tr>
+<!-- <div id="graph" class="graph" (change)="createGraph()">
+    <div class="nodeLine" *ngFor="let line of lines;">
+        <div style="flex: 1 0 auto;" class="nodeContainer" *ngFor="let node of line;">
+            <div class="integrationNode" id="{{ node }}" [style]="node < 0 ? 'visibility:hidden;' : ''" 
+                >{{ getNodeById(node)?.sort }}
+            </div>
+        </div>
     </div>
-    <button class="analyze" (click)="analyzeArchitecture()">Analyze Architecture</button>
+</div> -->
+<button class="importChannels" (click)="importChannels()">Import Channel Types</button> <button class="analyze" (click)="analyzeArchitecture()">Analyze Architecture</button>
+<table class="channelTable">
+    <!-- <div  > -->
+    <tr [ngStyle]="{color: (isAMismatch(channel)) ? '#ff0000' : '#000000'}" class="channel"
+        *ngFor="let channel of channels; let i = index;">
+        <th>
+            <span name="source_i" id="source_i" cols="30" rows="10" class="source">{{ getNodeById(channel.source)?.sort
+                }}</span>
+        </th>
+        <th>
+            <span style="color: gray;" name="current_dest_i" id="current_source_i" cols="30" rows="10">{{
+                stringifyType(channel.sourceType) }}</span>
+        </th>
+        <th>
+            <span name="dest_i" id="dest_i" cols="30" rows="10">{{ getNodeById(channel.dest)?.sort }}</span>
+        </th>
+        <th>
+            <span style="color: gray;" name="current_dest_i" id="current_dest_i" cols="30" rows="10">{{
+                stringifyType(channel.destType) }}</span>
+        </th>
+        <th>
+            <button class="addType" (click)="openDialog(i)">Edit</button>
+        </th>
+    </tr>
+    <!-- </div> -->
 </table>

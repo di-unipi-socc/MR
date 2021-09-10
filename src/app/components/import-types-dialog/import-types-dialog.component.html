@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Modify Channel Types</h1>
+<div mat-dialog-content>
+    <textarea style="width: 99%; height: 300px;" [(ngModel)]="data.types"></textarea>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Exit</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

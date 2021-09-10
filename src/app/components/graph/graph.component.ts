@@ -4,6 +4,7 @@ import { Node, Channel, Architecture, NamedType } from 'src/app/model/model';
 import { jsPlumb, jsPlumbInstance } from 'jsplumb';
 import { MatDialog } from '@angular/material/dialog';
 import { AddChannelDialogComponent } from '../add-channel-dialog/add-channel-dialog.component';
+import { ImportTypesDialogComponent } from '../import-types-dialog/import-types-dialog.component';
 
 @Component({
   selector: 'app-graph',
@@ -231,5 +232,23 @@ export class GraphComponent implements AfterViewInit {
   onResize() {
     console.log("resize");
     this.plumbIns.repaintEverything();
+  }
+
+  importChannels () {
+    const dialogRef = this.dialog.open(ImportTypesDialogComponent, {
+      width: '750px',
+      data: {
+        types: JSON.stringify(this.channels, null, 4)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (typeof result === 'undefined') {return;}
+      console.log("DIALOG CLOSED WITH RESULT : ");
+      console.log(result);
+
+      this.channels = JSON.parse(result.types);
+
+    });
   }
 }

@@ -12,14 +12,16 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { AddChannelDialogComponent } from './components/add-channel-dialog/add-channel-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button'; 
+import {MatButtonModule} from '@angular/material/button';
+import { ImportTypesDialogComponent } from './components/import-types-dialog/import-types-dialog.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponentComponent,
     GraphComponent,
-    AddChannelDialogComponent
+    AddChannelDialogComponent,
+    ImportTypesDialogComponent
   ],
   imports: [
     BrowserModule,
