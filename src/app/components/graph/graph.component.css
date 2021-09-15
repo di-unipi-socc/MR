@@ -3,15 +3,24 @@
   margin: auto;
 }
 
-.graph {
+/* .graph {
   text-align: center;
   margin-right: 15%;
   width: 70%;
   padding: 30px 0px 30px 0px;
+} */
+
+.graph_container {
+  width: 100%;
+  height: fit-content;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-right: 15%;
+  padding: 30px 0px 30px 0px;
 }
 
 .nodeLine {
-  display: inline-flex;
+  display: flex;
   margin-bottom: 20px;
 }
 
@@ -44,19 +53,32 @@
   font-family: 'Oswald', Helvetica;
   min-width: 400px;
   max-width: 80%;
-  border: 2px solid #000000;
-  border-radius: 25px;
   margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
 }
 
-.channelTable .channel tr {
-  background-color: #ffffff;
-  text-align: left;
+.channelTable thead tr {
+  background-color: #009879;
+  color: #ffffff;
 }
 
-.channelTable th {
-  padding: 8px 10px;
-  max-width: 25%;
+.channelTable th,
+.channelTable td {
+    padding: 12px 15px;
+}
+
+.channelTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.channelTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.channelTable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
 
 span {
@@ -73,6 +95,13 @@ button {
   color: rgb(10, 7, 0);
   text-decoration: none;
   font-family: 'Oswald', Helvetica;
+  border-radius: 12px;
+  background-color: aquamarine;
+}
+
+button:hover {
+  background-color: blue;
+  color: white;
 }
 
 .analyze {

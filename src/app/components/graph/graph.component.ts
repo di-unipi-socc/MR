@@ -16,11 +16,13 @@ export class GraphComponent implements AfterViewInit {
   @Input() nodes: Node[] = [];
   @Input() channels: Channel[] = [];
   @Input() mismatches: Channel[] = [];
+  @Input() newNodes: number[] = [];
   changed: boolean = false;
   @Input() lines: number[][] = [];
 
   plumbIns: jsPlumbInstance = jsPlumb.getInstance();
 
+  @Output() resolve = new EventEmitter<Architecture>();
   @Output() analyze = new EventEmitter<Architecture>();
 
   constructor(public dialog: MatDialog) { }
@@ -45,6 +47,7 @@ export class GraphComponent implements AfterViewInit {
     this.plumbIns.deleteEveryConnection();
     // this.plumbIns.ready(() => {})
     for (let channel of this.channels) {
+
       if (this.isAMismatch(channel))
         this.createChannel(this.plumbIns, channel.source.toString(), channel.dest.toString(), 'arrow-mismatch');
       else
@@ -149,6 +152,26 @@ export class GraphComponent implements AfterViewInit {
     this.analyze.emit(newArchitecture);
   }
 
+  resolveMismatches() {
+    let newArchitecture = new Architecture(
+      this.nodes,
+      this.channels,
+      []
+    );
+    this.resolve.emit(newArchitecture);
+  }
+
+  isNew (nodeID : number) {
+    let found = false;
+    for (let n of this.newNodes) {
+      if (n === nodeID){
+        found = true;
+        break;
+      }
+    }
+    return found;
+  }
+
   getNodeById(id: number): Node | null {
     for (let node of this.nodes)
       if (node.id === id) return node;
@@ -167,9 +190,9 @@ export class GraphComponent implements AfterViewInit {
   stringifyChannel(channel: Channel): string {
     let result = "{" +
       "\"source\":\"" + channel.source + "\"," +
-      "\"sourceType\":" + channel.sourceType.toString() + "," +
+      "\"sourceType\":" + this.stringifyType(channel.sourceType) + "," +
       "\"dest\":\"" + channel.dest + "\"," +
-      "\"destType\":" + channel.destType.toString() + "}";
+      "\"destType\":" + this.stringifyType(channel.destType) + "}";
       
     return result;
   }
@@ -228,10 +251,32 @@ export class GraphComponent implements AfterViewInit {
     }
   }
 
+  cleanChannels() {
+    var elements = document.getElementsByClassName("arrow");
+    while(elements.length > 0) {
+        if(elements[0].parentNode != null) {
+          elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+
+    elements = document.getElementsByClassName("arrow-mismatch");
+    while(elements.length > 0) {
+        if(elements[0].parentNode != null) {
+          elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+  }
+
   @HostListener('window:resize', [])
   onResize() {
     console.log("resize");
     this.plumbIns.repaintEverything();
+  }
+
+  graphScroll() {
+    console.log("graph scroll");
+    this.cleanChannels();
+    this.createGraph();
   }
 
   importChannels () {

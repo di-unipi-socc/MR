@@ -8,9 +8,10 @@ import { Architecture, Channel } from 'src/app/model/model';
 })
 export class ParseService {
   readonly POST_URL = 'http://localhost:8080/api/parser/route';
-  readonly ANALYZE_URL = 'http://localhost:8080/api/integration';
+  readonly SET_ARCHITECTURE_URL = 'http://localhost:8080/api/integration';
   readonly GET_URL = 'http://localhost:8080/api/parser/integration';
   readonly GET_FIXED_URL = 'http://localhost:8080/api/integration/fixed';
+  readonly GET_ANALYZED_URL = 'http://localhost:8080/api/integration/analyzed';
 
   constructor(private http: HttpClient) { }
 
@@ -26,14 +27,19 @@ export class ParseService {
     return this.http.get<Architecture>(this.GET_FIXED_URL);
   }
 
-  analyzeArchitecture(architecture: Architecture) {
+  getAnalyzedArchitecture(): Observable<Architecture> {
+    return this.http.get<Architecture>(this.GET_ANALYZED_URL);
+  }
+
+  setArchitecture(architecture: Architecture) {
     let body = JSON.stringify(architecture);
     console.log("Body: " + body);
     return this.http.post(
-      this.ANALYZE_URL, 
+      this.SET_ARCHITECTURE_URL, 
       body, 
       {'headers': {
         'content-type': 'application/json'
       }});
   }
+
 }

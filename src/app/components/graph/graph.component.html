@@ -1,42 +1,48 @@
+<div class="graph_container" (scroll)="graphScroll()">
 <div id="graph" class="graph" (change)="createGraph()">
     <div class="nodeLine" *ngFor="let line of lines;">
-        <div id="{{ node }}" [style]="node < 0 ? 'visibility:hidden;' : ''" class="integrationNode"
-            *ngFor="let node of line;">{{ getNodeById(node)?.sort }}
+        <div id="{{ node }}"
+            [style]="(node >= 0) ? (isNew(node) ? 'background: #ffff33; border: 2px solid rgb(255, 51, 0);' : '') : 'visibility:hidden;' "
+            class="integrationNode" *ngFor="let node of line;">{{ getNodeById(node)?.sort }}
         </div>
     </div>
 </div>
-<!-- <div id="graph" class="graph" (change)="createGraph()">
-    <div class="nodeLine" *ngFor="let line of lines;">
-        <div style="flex: 1 0 auto;" class="nodeContainer" *ngFor="let node of line;">
-            <div class="integrationNode" id="{{ node }}" [style]="node < 0 ? 'visibility:hidden;' : ''" 
-                >{{ getNodeById(node)?.sort }}
-            </div>
-        </div>
-    </div>
-</div> -->
-<button class="importChannels" (click)="importChannels()">Import Channel Types</button> <button class="analyze" (click)="analyzeArchitecture()">Analyze Architecture</button>
+</div>
+<button class="analyze" (click)="analyzeArchitecture()">Validate Architecture</button>
+<button class="analyze" (click)="resolveMismatches()">Resolve Mismatches</button>
 <table class="channelTable">
-    <!-- <div  > -->
-    <tr [ngStyle]="{color: (isAMismatch(channel)) ? '#ff0000' : '#000000'}" class="channel"
-        *ngFor="let channel of channels; let i = index;">
-        <th>
-            <span name="source_i" id="source_i" cols="30" rows="10" class="source">{{ getNodeById(channel.source)?.sort
-                }}</span>
-        </th>
-        <th>
-            <span style="color: gray;" name="current_dest_i" id="current_source_i" cols="30" rows="10">{{
-                stringifyType(channel.sourceType) }}</span>
-        </th>
-        <th>
-            <span name="dest_i" id="dest_i" cols="30" rows="10">{{ getNodeById(channel.dest)?.sort }}</span>
-        </th>
-        <th>
-            <span style="color: gray;" name="current_dest_i" id="current_dest_i" cols="30" rows="10">{{
-                stringifyType(channel.destType) }}</span>
-        </th>
-        <th>
-            <button class="addType" (click)="openDialog(i)">Edit</button>
-        </th>
-    </tr>
-    <!-- </div> -->
+    <thead>
+        <tr>
+            <th>Source</th>
+            <th>Source Type</th>
+            <th>Destination</th>
+            <th>Destination Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [ngStyle]="{color: (isAMismatch(channel)) ? '#ff0000' : (isNew(channel.source) || isNew(channel.dest) ? '#ff8000' : '#000000')}"
+            class="channel" *ngFor="let channel of channels; let i = index;">
+            <td>
+                <span name="source_i" id="source_i" cols="30" rows="10" class="source"><b>{{
+                    getNodeById(channel.source)?.sort
+                    }}</b></span>
+            </td>
+            <td>
+                <span style="color: gray;" name="current_dest_i" id="current_source_i" cols="30" rows="10">{{
+                    stringifyType(channel.sourceType) }}</span>
+            </td>
+            <td>
+                <span name="dest_i" id="dest_i" cols="30" rows="10"><b>{{ getNodeById(channel.dest)?.sort }}</b></span>
+            </td>
+            <td>
+                <span style="color: gray;" name="current_dest_i" id="current_dest_i" cols="30" rows="10">{{
+                    stringifyType(channel.destType) }}</span>
+            </td>
+            <td>
+                <button class="addType green" (click)="openDialog(i)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
+<button class="importChannels" (click)="importChannels()">JSON</button>
