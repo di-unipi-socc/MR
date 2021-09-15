@@ -19,3 +19,7 @@ body {
   stroke: red;
   stroke-width: 1;
 }
+
+textarea {
+  resize: none;
+}

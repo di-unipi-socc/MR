@@ -23,4 +23,12 @@ input {
     color: rgb(10, 7, 0);
     text-decoration: none;
     font-family: 'Oswald', Helvetica;
-}
+    border-radius: 12px;
+    background-color: #c1fa8b;
+    border: 2px solid green;
+  }
+  
+  input:hover {
+    background-color: green;
+    color: white;
+  }

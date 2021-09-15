@@ -3,13 +3,13 @@
   margin: auto;
 }
 
-/* .graph {
+.graph {
   text-align: center;
   margin-right: 15%;
   width: 70%;
-  padding: 30px 0px 30px 0px;
-} */
-
+  padding: 30px 0px 20px 0px;
+}
+/* 
 .graph_container {
   width: 100%;
   height: fit-content;
@@ -17,7 +17,7 @@
   white-space: nowrap;
   margin-right: 15%;
   padding: 30px 0px 30px 0px;
-}
+} */
 
 .nodeLine {
   display: flex;
@@ -40,7 +40,7 @@
   min-height: 40px;
   color: #000000;
   background: #c1fa8b;
-  border: 2px solid rgb(0, 94, 5);
+  border: 2px solid green;
   text-align: center;
   line-height: normal;
   font-family: 'Oswald', Helvetica;
@@ -55,13 +55,14 @@
   max-width: 80%;
   margin-top: 20px;
   border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border: 2px solid green
 }
 
 .channelTable thead tr {
-  background-color: #009879;
-  color: #ffffff;
+  border: 2px solid green;
+  background-color: #c1fa8b;
+  color: black;
 }
 
 .channelTable th,
@@ -78,7 +79,7 @@
 }
 
 .channelTable tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid green;
 }
 
 span {
@@ -96,11 +97,12 @@ button {
   text-decoration: none;
   font-family: 'Oswald', Helvetica;
   border-radius: 12px;
-  background-color: aquamarine;
+  background-color: #c1fa8b;
+  border: 2px solid green;
 }
 
 button:hover {
-  background-color: blue;
+  background-color: green;
   color: white;
 }
 
@@ -108,4 +110,8 @@ button:hover {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
+}
+
+.importChannels {
+  margin-bottom: 20px;
 }

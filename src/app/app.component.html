@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <h1>Mismatch Resolver</h1>
+  <h1>Mismatch Resolver</h1><br><br>
   <app-form-component (parse)="onParse($event)"></app-form-component>
   <app-graph *ngIf="success" [nodes]="nodes" [channels]="channels" [lines]="lines" [mismatches]="mismatches" [newNodes]="newNodes" (analyze)="onAnalyze($event)" (resolve)="onResolve($event)"></app-graph>
 </body>
