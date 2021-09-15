@@ -9,3 +9,7 @@ h1 {
     margin: auto;
     font-family: 'Oswald', Helvetica;
 }
+
+.graph-container {
+    overflow-x: scroll;
+}

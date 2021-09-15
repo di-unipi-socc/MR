@@ -1,6 +1,5 @@
 <br><br><br>
 <h2>Route Visualization</h2>
-<!-- <div class="graph_container" (scroll)="graphScroll()"> -->
 <div id="graph" class="graph" (change)="createGraph()">
     <div class="nodeLine" *ngFor="let line of lines;">
         <div id="{{ node }}"
@@ -8,11 +7,11 @@
             class="integrationNode" *ngFor="let node of line;">{{ getNodeById(node)?.sort }}
         </div>
     </div>
-<!-- </div> -->
 </div>
 <br>
 <button class="analyze" (click)="analyzeArchitecture()">Validate Architecture</button>
 <button class="analyze" (click)="resolveMismatches()">Resolve Mismatches</button>
+<button class="analyze" (click)="graphScroll()">FRECCIE DI MERDA</button>
 <br><br><br>
 <h2>Channel Types</h2>
 <table class="channelTable">

@@ -9,15 +9,6 @@
   width: 70%;
   padding: 30px 0px 20px 0px;
 }
-/* 
-.graph_container {
-  width: 100%;
-  height: fit-content;
-  overflow-x: scroll;
-  white-space: nowrap;
-  margin-right: 15%;
-  padding: 30px 0px 30px 0px;
-} */
 
 .nodeLine {
   display: flex;
