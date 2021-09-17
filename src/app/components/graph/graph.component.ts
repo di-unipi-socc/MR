@@ -270,22 +270,7 @@ export class GraphComponent implements AfterViewInit {
   @HostListener('window:resize', [])
   onResize() {
     console.log("resize");
-    // this.plumbIns.repaintEverything();
-  }
-
-  graphScroll() {
-    // console.log("graph scroll");
-    // this.cleanChannels();
-    // this.createGraph();
-
-    var arrows = document.getElementsByTagName("svg");
-    for (let i = 0; i < arrows.length; i++) {
-      arrows[i].style.position = "relative";
-      arrows[i].style.left = (parseInt(arrows[i].style.left) - 350 - 31*i).toString() + "px";
-      arrows[i].style.top = (parseInt(arrows[i].style.top) - 1965).toString() + "px";
-        
-      document.getElementsByClassName("graph-container")[0].appendChild(arrows[i]);
-    }
+    this.plumbIns.repaintEverything();
   }
 
   importChannels () {
