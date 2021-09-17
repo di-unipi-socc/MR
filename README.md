@@ -1,6 +1,16 @@
 # MismatchresolverFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+## Install using Docker
+```
+$ git clone https://github.com/Polletz/RouteParserFrontEnd.git
+$ docker build -t mismatchresolver-frontend .
+$ docker run -p 8080:8080 --rm -it mismatchresolver-frontend
+```
+
+To run in background:
+```
+$ docker run -dp 8080:8080 --rm -it mismatchresolver-frontend
+```
 
 ## Development server
 
