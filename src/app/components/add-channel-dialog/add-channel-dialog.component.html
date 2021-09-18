@@ -10,22 +10,26 @@
         </mat-form-field>
       </tr>
       <tr>
-        <mat-form-field appearance="fill">
+        <mat-form-field *ngIf="data.sourceType_type === 'simple'" appearance="fill">
           <mat-label>Source Type xmltype</mat-label>
           <input matInput [(ngModel)]="data.sourceType_xmltype">
         </mat-form-field>
       </tr>
       <tr>
-        <mat-form-field appearance="fill">
+        <mat-form-field *ngIf="data.sourceType_type === 'composite'" appearance="fill">
           <mat-label>Source Type Typeset</mat-label>
           <input matInput [(ngModel)]="data.sourceType_typeset">
         </mat-form-field>
       </tr>
       <tr>
-        <mat-form-field appearance="fill">
-          <mat-label>Source Type Type</mat-label>
-          <input matInput [(ngModel)]="data.sourceType_type">
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Source_Type Type</mat-label>
+            <mat-select [(ngModel)]="data.sourceType_type">
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
       </tr>
     </th>
     <th>
@@ -36,21 +40,25 @@
       </mat-form-field>
     </tr>
     <tr>
-      <mat-form-field appearance="fill">
+      <mat-form-field *ngIf="data.destType_type === 'simple'" appearance="fill">
         <mat-label>Dest Type xmltype</mat-label>
         <input matInput [(ngModel)]="data.destType_xmltype">
       </mat-form-field>
     </tr>
     <tr>
-      <mat-form-field appearance="fill">
+      <mat-form-field *ngIf="data.destType_type === 'composite'" appearance="fill">
         <mat-label>Dest Type typeset</mat-label>
         <input matInput [(ngModel)]="data.destType_typeset">
       </mat-form-field>
     </tr>
     <tr>
       <mat-form-field appearance="fill">
-        <mat-label>Dest Type Type</mat-label>
-        <input matInput [(ngModel)]="data.destType_type">
+        <mat-label>Dest_Type Type</mat-label>
+        <mat-select [(ngModel)]="data.destType_type">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </tr>
     </th>

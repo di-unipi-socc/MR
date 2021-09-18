@@ -1,4 +1,4 @@
-import { Component, Host, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -21,6 +21,11 @@ export interface DialogData {
   styleUrls: ['./add-channel-dialog.component.css']
 })
 export class AddChannelDialogComponent implements OnInit {
+
+  types: any[] = [
+    {value: 'simple', viewValue: 'Simple'},
+    {value: 'composite', viewValue: 'Composite'}
+  ];
 
   constructor(public dialogRef: MatDialogRef<AddChannelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
