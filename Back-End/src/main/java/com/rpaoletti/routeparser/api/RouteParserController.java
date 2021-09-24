@@ -20,6 +20,7 @@ public class RouteParserController {
     @Autowired
     public RouteParserController(RouteParserService routeParserService) {
         this.routeParserService = routeParserService;
+        this.routeParserService.addRouteParser(new RouteParser(null));
     }
 
     @PostMapping(path = "parser/route")
