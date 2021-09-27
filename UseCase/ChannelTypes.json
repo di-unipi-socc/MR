@@ -1,0 +1,833 @@
+[
+    {
+        "source": 0,
+        "dest": 1,
+        "sourceType": {
+            "name": "customer",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"age",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"marital_status",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "customer",
+            "xmltype": "empty",
+            "typeset": [
+							{
+								"name":"name",
+								"xmltype":"string",
+								"typeset":[],
+								"type":"simple"
+							},
+							{
+								"name":"occupation",
+								"xmltype":"string",
+								"typeset":[
+												{
+													"name":"job",
+													"xmltype":"string",
+													"typeset":[],
+													"type":"simple"
+												},
+												{
+													"name":"income",
+													"xmltype":"double",
+													"typeset":[],
+													"type":"simple"
+												}
+											],
+								"type":"composite"
+							},
+							{
+								"name":"marital_status",
+								"xmltype":"string",
+								"typeset":[],
+								"type":"simple"
+							}
+						],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 1,
+        "dest": 2,
+        "sourceType": {
+            "name": "credit_score",
+            "xmltype": "double",
+            "typeset": [],
+            "type": "simple"
+        },
+        "destType": {
+            "name": "credit_score",
+            "xmltype": "double",
+            "typeset": [],
+            "type": "simple"
+        }
+    },
+    {
+        "source": 2,
+        "dest": 3,
+        "sourceType": {
+            "name": "banks_list",
+            "xmltype": "string",
+            "typeset": [],
+            "type": "simple"
+        },
+        "destType": {
+            "name": "customer_banks_list",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"banks_list",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 3,
+        "dest": 4,
+        "sourceType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 3,
+        "dest": 5,
+        "sourceType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 3,
+        "dest": 6,
+        "sourceType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 4,
+        "dest": 7,
+        "sourceType": {
+            "name": "request_bank1",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request_bank1",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"income",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 5,
+        "dest": 11,
+        "sourceType": {
+            "name": "request_bank2",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request_bank2",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 6,
+        "dest": 12,
+        "sourceType": {
+            "name": "request_bank3",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "request_bank3",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"credit_score",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 7,
+        "dest": 8,
+        "sourceType": {
+            "name": "result_bank1",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"amount",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"interests",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "result_bank1",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"amount",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"job",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"interests",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 8,
+        "dest": 9,
+        "sourceType": {
+            "name": "result",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"bank_name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"result",
+					"xmltype":"double",
+					"typeset":[
+						{	
+							"name":"amount",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						},
+						{	
+							"name":"interests",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						}
+					],
+					"type":"composite"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "result",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"bank_name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"amount",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{	
+					"name":"interests",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 9,
+        "dest": 10,
+        "sourceType": {
+            "name": "result_list",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name" : "list",
+					"xmltype" : "",
+					"typeset" : [
+						{
+							"name":"name",
+							"xmltype":"string",
+							"typeset":[],
+							"type":"simple"
+						},
+						{
+							"name":"bank_name",
+							"xmltype":"string",
+							"typeset":[],
+							"type":"simple"
+						},
+						{
+							"name":"amount",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						},
+						{	
+							"name":"interests",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						}
+					],
+					"type" : "composite"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "result_list",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name" : "list",
+					"xmltype" : "",
+					"typeset" : [
+						{
+							"name":"name",
+							"xmltype":"string",
+							"typeset":[],
+							"type":"simple"
+						},
+						{
+							"name":"bank_name",
+							"xmltype":"string",
+							"typeset":[],
+							"type":"simple"
+						},
+						{
+							"name":"amount",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						},
+						{	
+							"name":"interests",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						}
+					],
+					"type" : "composite"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 11,
+        "dest": 8,
+        "sourceType": {
+            "name": "result_bank2",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"amount",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"interests",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "result_bank2",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"amount",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"interests",
+					"xmltype":"double",
+					"typeset":[],
+					"type":"simple"
+				}
+			],
+            "type": "composite"
+        }
+    },
+    {
+        "source": 12,
+        "dest": 8,
+        "sourceType": {
+            "name": "result_bank3",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"result",
+					"xmltype":"double",
+					"typeset":[
+						{	
+							"name":"amount",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						},
+						{	
+							"name":"interests",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						}
+					],
+					"type":"composite"
+				}
+			],
+            "type": "composite"
+        },
+        "destType": {
+            "name": "result_bank3",
+            "xmltype": "empty",
+            "typeset": [
+				{
+					"name":"name",
+					"xmltype":"string",
+					"typeset":[],
+					"type":"simple"
+				},
+				{
+					"name":"result",
+					"xmltype":"double",
+					"typeset":[
+						{	
+							"name":"amount",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						},
+						{	
+							"name":"interests",
+							"xmltype":"double",
+							"typeset":[],
+							"type":"simple"
+						}
+					],
+					"type":"composite"
+				}
+			],
+            "type": "composite"
+        }
+    }
+]
