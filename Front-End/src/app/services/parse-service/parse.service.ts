@@ -7,11 +7,11 @@ import { Architecture, Channel } from 'src/app/model/model';
   providedIn: 'root'
 })
 export class ParseService {
-  readonly POST_URL = 'http://localhost:8080/api/parser/route';
-  readonly SET_ARCHITECTURE_URL = 'http://localhost:8080/api/integration';
-  readonly GET_URL = 'http://localhost:8080/api/parser/integration';
-  readonly GET_FIXED_URL = 'http://localhost:8080/api/integration/fixed';
-  readonly GET_ANALYZED_URL = 'http://localhost:8080/api/integration/analyzed';
+  readonly POST_URL = location.host + ':5000/api/parser/route';
+  readonly SET_ARCHITECTURE_URL = location.host + ':5000/api/integration';
+  readonly GET_URL = location.host + ':5000/api/parser/integration';
+  readonly GET_FIXED_URL = location.host + ':5000/api/integration/fixed';
+  readonly GET_ANALYZED_URL = location.host ':5000/api/integration/analyzed';
 
   constructor(private http: HttpClient) { }
 
