@@ -11,7 +11,7 @@ export class ParseService {
   readonly SET_ARCHITECTURE_URL = location.host + ':5000/api/integration';
   readonly GET_URL = location.host + ':5000/api/parser/integration';
   readonly GET_FIXED_URL = location.host + ':5000/api/integration/fixed';
-  readonly GET_ANALYZED_URL = location.host ':5000/api/integration/analyzed';
+  readonly GET_ANALYZED_URL = location.host + ':5000/api/integration/analyzed';
 
   constructor(private http: HttpClient) { }
 
