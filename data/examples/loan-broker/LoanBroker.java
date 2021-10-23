@@ -1,10 +1,9 @@
-public class RouteExample extends RouteBuilder {
+public class LoanBroker extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
         from("direct:main").enrich("getCreditScore").enrich("getBanksList").multicast()
                 .to("tr1").to("tr2").to("tr3");
-
         from("tr1").to("Bank1");
         from("Bank1").bean("Normalizer").aggregate("Aggregator").to("result");
         from("tr2").to("Bank2");
