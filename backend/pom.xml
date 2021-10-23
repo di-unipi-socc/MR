@@ -8,11 +8,11 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.rpaoletti</groupId>
-	<artifactId>mismatchresolver</artifactId>
+	<groupId>com.diunipisocc</groupId>
+	<artifactId>MR</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mismatchresolver</name>
-	<description>Thesis project for Master Degree</description>
+	<name>MR</name>
+	<description>Mismatch Resolver - Type mismatch resolver in EIP-based integration architectures</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -46,7 +46,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<fork>true</fork>
-					<mainClass>com.rpaoletti.MismatchResolverApplication</mainClass>
+					<mainClass>com.diunipisocc.MismatchResolverApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>
