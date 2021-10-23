@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rpaoletti.routeparser.utils.IDGenerator;
 import com.rpaoletti.routeparser.utils.Utils;
 
-import javax.sound.midi.SysexMessage;
 import java.util.*;
 
 public class IntegrationArchitecture {

@@ -326,18 +326,4 @@ public class RouteParser {
         String jsonStr = gson.toJson(A);
         return jsonStr;
     }
-
-    private void printNodes(){
-        System.out.println("Nodes: ");
-        for (IntegrationNode s : A.getNodes()){
-            System.out.println("---- " + s);
-        }
-    }
-
-    private void printChannels(){
-        System.out.println("Channels: ");
-        for (Channel c : A.getChannels()){
-            System.out.println("---- " + c);
-        }
-    }
 }
