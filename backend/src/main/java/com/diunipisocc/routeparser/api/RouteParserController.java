@@ -1,10 +1,10 @@
-package com.rpaoletti.routeparser.api;
+package com.diunipisocc.routeparser.api;
 
-import com.rpaoletti.routeparser.RouteParser;
-import com.rpaoletti.routeparser.model.Channel;
-import com.rpaoletti.routeparser.model.IntegrationArchitecture;
-import com.rpaoletti.routeparser.model.IntegrationNode;
-import com.rpaoletti.routeparser.service.RouteParserService;
+import com.diunipisocc.routeparser.RouteParser;
+import com.diunipisocc.routeparser.model.IntegrationArchitecture;
+import com.diunipisocc.routeparser.model.IntegrationNode;
+import com.diunipisocc.routeparser.model.Channel;
+import com.diunipisocc.routeparser.service.RouteParserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
