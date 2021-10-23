@@ -1,8 +1,8 @@
-package com.rpaoletti.routeparser.utils;
-
-import com.rpaoletti.routeparser.model.NamedType;
+package com.diunipisocc.routeparser.utils;
 
 import java.util.*;
+
+import com.diunipisocc.routeparser.model.NamedType;
 
 public class Utils {
 

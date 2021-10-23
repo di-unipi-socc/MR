@@ -1,8 +1,8 @@
-package com.rpaoletti.routeparser.model;
+package com.diunipisocc.routeparser.model;
 
+import com.diunipisocc.routeparser.utils.IDGenerator;
+import com.diunipisocc.routeparser.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rpaoletti.routeparser.utils.IDGenerator;
-import com.rpaoletti.routeparser.utils.Utils;
 
 import java.util.*;
 

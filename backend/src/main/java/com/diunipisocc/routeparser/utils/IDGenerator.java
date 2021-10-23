@@ -1,4 +1,4 @@
-package com.rpaoletti.routeparser.utils;
+package com.diunipisocc.routeparser.utils;
 
 public class IDGenerator {
     int uniqueId;

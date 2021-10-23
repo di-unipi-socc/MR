@@ -1,4 +1,4 @@
-package com.rpaoletti.routeparser.model;
+package com.diunipisocc.routeparser.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

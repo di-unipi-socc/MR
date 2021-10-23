@@ -1,17 +1,17 @@
-package com.rpaoletti.routeparser;
+package com.diunipisocc.routeparser;
 
+import com.diunipisocc.routeparser.model.IntegrationArchitecture;
+import com.diunipisocc.routeparser.model.IntegrationNode;
+import com.diunipisocc.routeparser.utils.NODE_TYPE;
+import com.diunipisocc.routeparser.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.Node;
 import com.google.gson.Gson;
-import com.rpaoletti.routeparser.model.Channel;
-import com.rpaoletti.routeparser.model.IntegrationArchitecture;
-import com.rpaoletti.routeparser.model.IntegrationNode;
-import com.rpaoletti.routeparser.utils.ChoiceStruct;
-import com.rpaoletti.routeparser.utils.NODE_TYPE;
-import com.rpaoletti.routeparser.utils.Utils;
+import com.diunipisocc.routeparser.model.Channel;
+import com.diunipisocc.routeparser.utils.ChoiceStruct;
 
 import java.util.*;
 import java.util.stream.Collectors;
