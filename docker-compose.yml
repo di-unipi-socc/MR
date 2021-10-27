@@ -1,11 +1,11 @@
 version: "3.4"
 services:
-  front-end:
+  frontend:
     build: frontend
     ports:
       - "5000:80"
 
-  back-end:
+  backend:
     build: backend
     ports:
       - "8080:8080"
